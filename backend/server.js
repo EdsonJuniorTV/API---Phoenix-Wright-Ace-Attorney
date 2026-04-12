@@ -8,8 +8,10 @@ const personagens = [
     {
         id: 1,
         nome: "Phoenix Wright",
-        profissao: "Advogado",
-        url: "",
+        profissao: "Advogado de defesa",
+        idade: 24,
+        descricao: "Advogado de defesa com cabelo espetado, conhecido também pelo apelido de Nico, protagonista da série de jogos Phoenix Wright: Ace Attorney.",
+        img: "",
         audio: {
             protesto: "",
             espera: ""
@@ -18,8 +20,10 @@ const personagens = [
     {
         id: 2,
         nome: "Mia Fey",
-        profissao: "Advogada",
-        url: "",
+        profissao: "Advogada de defesa",
+        idade: 27,
+        descricao: "Advogada de defesa, mentora de Phoenix Wright, sendo uma pessoa renomada na sua área.",
+        img: "",
         audio: {
             protesto: "",
             espera: ""
@@ -29,7 +33,9 @@ const personagens = [
         id: 3,
         nome: "Euclides Graça",
         profissao: "Promotor",
-        url: "",
+        idade: 52,
+        descricao: "Primeiro promotor que enfrentamos nos três primeiros jogos da franquia Phoenix Wright: Ace Attorney, sendo conhecido como assasino de novatos, mas sempre perde para o protagonista",
+        img: "",
         audio: {
             protesto: "",
             espera: ""
@@ -37,9 +43,11 @@ const personagens = [
     },
     {
         id: 4,
-        nome: "Lucca Beludo",
-        profissao: "Vendedor de Cachorros quentes",
-        url: "",
+        nome: "Miles Edgeworth",
+        profissao: "Promotor",
+        idade: 24,
+        descricao: "Promotor recorrente ao longo dos três primeiros jogos, busca a condenação dos réus a qualquer custo, mas ainda visa pela verdade acima de tudo. Foi um amigo de infência do protagonista.",
+        img: "",
         audio: {
             protesto: "",
             espera: ""
@@ -47,9 +55,11 @@ const personagens = [
     },
     {
         id: 5,
-        nome: "Cíntia Rocha",
-        profissao: "Modelo",
-        url: "",
+        nome: "Manfred Von Karma",
+        profissao: "Promotor",
+        idade: 65,
+        descricao: "Promotor mais voraz, busca a condenação dos réus acima de tudo, mentor de Miles Edgeworth. Possui um histórico de 40 anos sem derrotas no tribunal.",
+        img: "",
         audio: {
             protesto: "",
             espera: ""
@@ -57,14 +67,28 @@ const personagens = [
     },
     {
         id: 6,
-        nome: "Juiz",
-        profissao: "Juiz",
-        url: "",
+        nome: "Franziska Von Karma",
+        profissao: "Promotora",
+        idade: 18,
+        descricao: "A pessoa mais nova a se tronar promotora, filha de Manfred Von Karma. Estudou na Alemanha e venceu diversos casos ao longo da sua curta carreira. Busca honrar o legado da família Von Karma e a perfeição acima de tudo.",
+        img: "",
         audio: {
             protesto: "",
             espera: ""
         }
-    }
+    },
+    {
+        id: 7,
+        nome: "Diego Armando (Godot)",
+        profissao: "Promotor",
+        idade: 33,
+        descricao: "Promotor misterioso, viciado em café que possui uma inimizade contra Wright.",
+        img: "",
+        audio: {
+            protesto: "",
+            espera: ""
+        }
+    },
 ];
 
 // GET/
@@ -84,7 +108,7 @@ app.get("/personagens",(request,response) => {
 // GET/personagem/:id
 // Método: GET
 // Descrição: Pega um personagem específico por meio do ID
-app.get("/personagem/:id",(request,response) => {
+app.get("/personagem/id/:id",(request,response) => {
     const id = parseInt(request.params.id);
     const personagem = personagens.find(p => p.id === id);
 
@@ -96,6 +120,42 @@ app.get("/personagem/:id",(request,response) => {
     }
 
     response.json(personagem);
+});
+
+// GET/personagem/nome/:nome
+// Método: GET
+// Descrição: Pega um personagem específico pro meio do nome
+app.get("/personagem/nome/:nome",(request,response) => {
+    const nome = request.params.nome.trim().toLowerCase();
+    const personagem = personagens.filter(
+        p => p.nome.trim().toLowerCase().includes(nome)
+    );
+
+    if(personagem.length === 0) {
+        response.status(404).json({
+            mensagem: "Esse nome não corresponde a ninguém da lista de envolvidos com o caso."
+        });
+    }
+
+    response.json(personagem);
+});
+
+// GET/personagens/profissao/:profissao
+// Método: GET
+// Decsrição: Pega um conjunto de personagens com aquela profissão
+app.get("/personagens/profissao/:profissao",(request,response) => {
+    const profissao = request.params.profissao.trim().toLowerCase();
+    const profissionais = personagens.filter(
+        p => p.profissao.trim().toLowerCase() === profissao
+    );
+
+    if(profissionais.length === 0) {
+        return response.status(404).json({
+            mensagem: "Essa profissão não está listada."
+        });
+    }
+
+    response.json(profissionais);
 });
 
 // LISTEN Porta: 8000
