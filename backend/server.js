@@ -11,7 +11,7 @@ const personagens = [
         profissao: "Advogado de defesa",
         idade: 24,
         descricao: "Advogado de defesa com cabelo espetado, conhecido também pelo apelido de Nico, protagonista da série de jogos Phoenix Wright: Ace Attorney.",
-        img: "",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU95YgGd4m32SeBRbMNdTga8K5jyJk2H7JLA&s",
         audio: {
             protesto: "",
             espera: ""
@@ -23,7 +23,7 @@ const personagens = [
         profissao: "Advogada de defesa",
         idade: 27,
         descricao: "Advogada de defesa, mentora de Phoenix Wright, sendo uma pessoa renomada na sua área.",
-        img: "",
+        img: "https://static.wikia.nocookie.net/legendsofthemultiuniverse/images/f/f0/Mia0.jpg/revision/latest?cb=20140620115231",
         audio: {
             protesto: "",
             espera: ""
@@ -35,7 +35,7 @@ const personagens = [
         profissao: "Promotor",
         idade: 52,
         descricao: "Primeiro promotor que enfrentamos nos três primeiros jogos da franquia Phoenix Wright: Ace Attorney, sendo conhecido como assasino de novatos, mas sempre perde para o protagonista",
-        img: "",
+        img: "https://static.wikia.nocookie.net/aceattorney/images/f/fa/Payne2.png/revision/latest/scale-to-width-down/250?cb=20251123171114",
         audio: {
             protesto: "",
             espera: ""
@@ -47,7 +47,7 @@ const personagens = [
         profissao: "Promotor",
         idade: 24,
         descricao: "Promotor recorrente ao longo dos três primeiros jogos, busca a condenação dos réus a qualquer custo, mas ainda visa pela verdade acima de tudo. Foi um amigo de infência do protagonista.",
-        img: "",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqQSVV-Srfh0nDDajb9fMfck5YrVTkbeqbYg&s",
         audio: {
             protesto: "",
             espera: ""
@@ -59,7 +59,7 @@ const personagens = [
         profissao: "Promotor",
         idade: 65,
         descricao: "Promotor mais voraz, busca a condenação dos réus acima de tudo, mentor de Miles Edgeworth. Possui um histórico de 40 anos sem derrotas no tribunal.",
-        img: "",
+        img: "https://static.wikia.nocookie.net/aceattorney/images/f/fa/Manfred_von_Karma_OA.png/revision/latest/scale-to-width-down/1200?cb=20260112045647",
         audio: {
             protesto: "",
             espera: ""
@@ -71,7 +71,7 @@ const personagens = [
         profissao: "Promotora",
         idade: 18,
         descricao: "A pessoa mais nova a se tronar promotora, filha de Manfred Von Karma. Estudou na Alemanha e venceu diversos casos ao longo da sua curta carreira. Busca honrar o legado da família Von Karma e a perfeição acima de tudo.",
-        img: "",
+        img: "https://static.wikia.nocookie.net/aceattorney/images/4/43/Franzi.png/revision/latest/scale-to-width-down/1200?cb=20260111222531",
         audio: {
             protesto: "",
             espera: ""
@@ -83,7 +83,7 @@ const personagens = [
         profissao: "Promotor",
         idade: 33,
         descricao: "Promotor misterioso, viciado em café que possui uma inimizade contra Wright.",
-        img: "",
+        img: "https://upload.wikimedia.org/wikipedia/en/7/7a/Godot_Ace_Attorney.png",
         audio: {
             protesto: "",
             espera: ""
