@@ -13,7 +13,7 @@ const personagens = [
         descricao: "Advogado de defesa com cabelo espetado, conhecido também pelo apelido de Nico, protagonista da série de jogos Phoenix Wright: Ace Attorney.",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU95YgGd4m32SeBRbMNdTga8K5jyJk2H7JLA&s",
         audio: {
-            protesto: "",
+            protesto: "https://youtu.be/FndmLs5XvJM",
             espera: ""
         }
     },
