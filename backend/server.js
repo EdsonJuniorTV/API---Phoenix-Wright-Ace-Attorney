@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 
 const app = express();
 const porta = 8000;
@@ -13,8 +14,8 @@ const personagens = [
         descricao: "Advogado de defesa com cabelo espetado, conhecido também pelo apelido de Nico, protagonista da série de jogos Phoenix Wright: Ace Attorney.",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU95YgGd4m32SeBRbMNdTga8K5jyJk2H7JLA&s",
         audio: {
-            protesto: "https://youtu.be/FndmLs5XvJM",
-            espera: ""
+            protesto: "protesto_phoenix wright.wav",
+            espera: "calma-la_phoenix wright.wav"
         }
     },
     {
@@ -25,8 +26,8 @@ const personagens = [
         descricao: "Advogada de defesa, mentora de Phoenix Wright, sendo uma pessoa renomada na sua área.",
         img: "https://static.wikia.nocookie.net/legendsofthemultiuniverse/images/f/f0/Mia0.jpg/revision/latest?cb=20140620115231",
         audio: {
-            protesto: "",
-            espera: ""
+            protesto: "protesto_mia fey.wav",
+            espera: "calma-la_mia fey.wav"
         }
     },
     {
@@ -37,7 +38,7 @@ const personagens = [
         descricao: "Primeiro promotor que enfrentamos nos três primeiros jogos da franquia Phoenix Wright: Ace Attorney, sendo conhecido como assasino de novatos, mas sempre perde para o protagonista",
         img: "https://static.wikia.nocookie.net/aceattorney/images/f/fa/Payne2.png/revision/latest/scale-to-width-down/250?cb=20251123171114",
         audio: {
-            protesto: "",
+            protesto: "protesto_euclides graca.wav",
             espera: ""
         }
     },
@@ -49,8 +50,8 @@ const personagens = [
         descricao: "Promotor recorrente ao longo dos três primeiros jogos, busca a condenação dos réus a qualquer custo, mas ainda visa pela verdade acima de tudo. Foi um amigo de infência do protagonista.",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqQSVV-Srfh0nDDajb9fMfck5YrVTkbeqbYg&s",
         audio: {
-            protesto: "",
-            espera: ""
+            protesto: "protesto_miles edgeworth.wav",
+            espera: "calma-la_miles edgeworth.wav"
         }
     },
     {
@@ -61,7 +62,7 @@ const personagens = [
         descricao: "Promotor mais voraz, busca a condenação dos réus acima de tudo, mentor de Miles Edgeworth. Possui um histórico de 40 anos sem derrotas no tribunal.",
         img: "https://static.wikia.nocookie.net/aceattorney/images/f/fa/Manfred_von_Karma_OA.png/revision/latest/scale-to-width-down/1200?cb=20260112045647",
         audio: {
-            protesto: "",
+            protesto: "protesto_monfred von karma.wav",
             espera: ""
         }
     },
@@ -73,7 +74,7 @@ const personagens = [
         descricao: "A pessoa mais nova a se tronar promotora, filha de Manfred Von Karma. Estudou na Alemanha e venceu diversos casos ao longo da sua curta carreira. Busca honrar o legado da família Von Karma e a perfeição acima de tudo.",
         img: "https://static.wikia.nocookie.net/aceattorney/images/4/43/Franzi.png/revision/latest/scale-to-width-down/1200?cb=20260111222531",
         audio: {
-            protesto: "",
+            protesto: "protesto_franziska von karma.wav",
             espera: ""
         }
     },
@@ -85,7 +86,7 @@ const personagens = [
         descricao: "Promotor misterioso, viciado em café que possui uma inimizade contra Wright.",
         img: "https://upload.wikimedia.org/wikipedia/en/7/7a/Godot_Ace_Attorney.png",
         audio: {
-            protesto: "",
+            protesto: "protesto_diego armando (godot).wav",
             espera: ""
         }
     },
@@ -138,6 +139,24 @@ app.get("/personagem/nome/:nome",(request,response) => {
     }
 
     response.json(personagem);
+});
+
+// GET
+// Método: GET
+// Descrição: Pega um áudio de um personagem pelo nome
+app.get("/personagem/audio/protesto/nome/:nome",(request,response) => {
+    const nome = request.params.nome.trim().toLowerCase();
+    const personagem = personagens.find(
+        p => p.nome.trim().toLowerCase().includes(nome)
+    );
+
+    if(!personagem) {
+        response.status(404).json({
+            mensagem: "Não conseguimos escutar esse indivíduo."
+        });
+    }
+
+    response.sendFile(path.join(import.meta.dirname, 'audios', personagem.audio.protesto));
 });
 
 // GET/personagens/profissao/:profissao
